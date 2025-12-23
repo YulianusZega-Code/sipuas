@@ -1,0 +1,89 @@
+<?php
+/**
+ * GET GURU API - FIXED
+ * File: backend/api/survey/get_guru.php
+ * 
+ * Menampilkan daftar guru yang mengajar siswa untuk semester tertentu
+ */
+
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+
+include_once '../../config/database.php';
+
+$database = new Database();
+$db = $database->getConnection();
+
+$siswa_id = isset($_GET['siswa_id']) ? $_GET['siswa_id'] : null;
+$semester = isset($_GET['semester']) ? $_GET['semester'] : null;
+
+if(!$siswa_id || !$semester) {
+    echo json_encode(["success" => false, "message" => "Parameter tidak lengkap"]);
+    exit;
+}
+
+try {
+    // Get kelas siswa
+    $query = "SELECT kelas_id FROM siswa WHERE id = :siswa_id";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':siswa_id', $siswa_id);
+    $stmt->execute();
+    $siswa = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if(!$siswa) {
+        echo json_encode(["success" => false, "message" => "Siswa tidak ditemukan"]);
+        exit;
+    }
+    
+    // Get guru yang mengajar - QUERY DIPERBAIKI
+    $query = "SELECT 
+              g.id, 
+              g.nama_lengkap, 
+              g.nip, 
+              g.foto,
+              GROUP_CONCAT(DISTINCT m.nama_mapel SEPARATOR ', ') as mata_pelajaran,
+              COALESCE(MAX(CASE WHEN sr.id IS NOT NULL THEN 1 ELSE 0 END), 0) as sudah_survey
+              FROM penugasan p
+              JOIN guru g ON p.guru_id = g.id
+              JOIN mata_pelajaran m ON p.mata_pelajaran_id = m.id
+              LEFT JOIN survey_response sr ON sr.guru_id = g.id 
+                AND sr.siswa_id = :siswa_id 
+                AND sr.semester = :semester
+              WHERE p.kelas_id = :kelas_id 
+              AND p.semester = :semester
+              GROUP BY g.id, g.nama_lengkap, g.nip, g.foto
+              ORDER BY sudah_survey ASC, g.nama_lengkap";
+    
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':siswa_id', $siswa_id);
+    $stmt->bindParam(':kelas_id', $siswa['kelas_id']);
+    $stmt->bindParam(':semester', $semester);
+    $stmt->execute();
+    
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    // Add foto URL and convert sudah_survey to integer
+    foreach ($rows as &$row) {
+        if ($row['foto']) {
+            $row['foto_url'] = 'http://localhost/survey-guru/backend/uploads/guru/' . $row['foto'];
+        } else {
+            $row['foto_url'] = null;
+        }
+        
+        // Ensure sudah_survey is integer
+        $row['sudah_survey'] = (int)$row['sudah_survey'];
+    }
+    
+    echo json_encode([
+        "success" => true, 
+        "data" => $rows,
+        "total" => count($rows)
+    ]);
+    
+} catch(PDOException $e) {
+    echo json_encode([
+        "success" => false, 
+        "message" => "Database error: " . $e->getMessage()
+    ]);
+}
+?>

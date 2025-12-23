@@ -1,0 +1,1019 @@
+/* Admin.css - Responsive Admin Dashboard */
+
+.admin-page {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.admin-header {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-header h1 {
+  color: #333;
+  font-size: 22px;
+  margin: 0 0 15px 0;
+}
+
+.read-only-notice {
+  color: #f97316;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 5px 0 0 0;
+  padding: 6px 12px;
+  background: #fed7aa;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.tabs button.active {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+.admin-content {
+  padding: 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.section-header h2 {
+  color: #333;
+  font-size: 20px;
+  margin: 0;
+}
+
+.section-header input {
+  padding: 8px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  max-width: 150px;
+}
+
+.btn-add {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Hasil Survey */
+.hasil-list {
+  display: grid;
+  gap: 15px;
+}
+
+.hasil-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hasil-rank {
+  font-size: 24px;
+  font-weight: 700;
+  color: #667eea;
+  min-width: 50px;
+  text-align: center;
+}
+
+.hasil-info {
+  flex: 1;
+}
+
+.hasil-info h3 {
+  color: #333;
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+
+.hasil-info p {
+  color: #666;
+  font-size: 13px;
+  margin: 3px 0;
+}
+
+.hasil-score {
+  text-align: center;
+}
+
+.score-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.score-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Data List */
+.data-list {
+  display: grid;
+  gap: 12px;
+}
+
+.data-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.data-card h3 {
+  color: #333;
+  font-size: 16px;
+  margin: 0 0 8px 0;
+}
+
+.data-card p {
+  color: #666;
+  font-size: 13px;
+  margin: 4px 0;
+}
+
+.btn-delete {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .admin-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hasil-list,
+  .data-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  padding: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #999;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.modal-form {
+  padding: 20px;
+}
+
+.modal-form .form-group {
+  margin-bottom: 20px;
+}
+
+.modal-form .form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #555;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.modal-form .form-group input,
+.modal-form .form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.modal-form .form-group input:focus,
+.modal-form .form-group select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-submit {
+  padding: 10px 24px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background: #16a34a;
+}
+
+.btn-cancel {
+  padding: 10px 24px;
+  background: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  background: #4b5563;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-edit {
+  padding: 6px 14px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  background: #2563eb;
+}
+
+.semester-input {
+  max-width: 150px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: #667eea;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   FOTO GURU STYLES
+   ===================================================== */
+
+.guru-list {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+}
+
+.guru-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px !important;
+}
+
+.guru-foto-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.guru-foto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #667eea;
+}
+
+.guru-foto-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guru-initial {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+}
+
+.foto-actions {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+.btn-upload-foto {
+  padding: 6px 12px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-upload-foto:hover {
+  background: #2563eb;
+}
+
+.btn-delete-foto {
+  padding: 6px 10px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn-delete-foto:hover {
+  background: #dc2626;
+}
+
+.guru-info {
+  text-align: center;
+  width: 100%;
+}
+
+.guru-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.guru-info p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.hasil-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hasil-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.hasil-table th {
+  padding: 15px 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hasil-table th:last-child {
+  border-right: none;
+}
+
+.hasil-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s;
+}
+
+.hasil-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.hasil-table tbody tr.top-rank {
+  background: #fef3c7;
+}
+
+.hasil-table td {
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* Column widths */
+.rank-col {
+  width: 50px;
+}
+.foto-col {
+  width: 70px;
+}
+.nama-col {
+  width: 200px;
+  text-align: left;
+}
+.nip-col {
+  width: 150px;
+}
+.resp-col {
+  width: 90px;
+}
+.aspek-col {
+  width: 70px;
+}
+.total-col {
+  width: 90px;
+}
+.kategori-col {
+  width: 150px;
+}
+
+/* Rank badge */
+.rank-badge {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.rank-badge.rank-1 {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.5);
+}
+
+.rank-badge.rank-2 {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+  color: white;
+}
+
+.rank-badge.rank-3 {
+  background: linear-gradient(135deg, #fb923c, #ea580c);
+  color: white;
+}
+
+/* Foto guru */
+.guru-foto-table {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #667eea;
+}
+
+.guru-foto-placeholder-table {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Badges */
+.responden-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.score-highlight {
+  font-weight: bold;
+  font-size: 16px;
+  color: #667eea;
+}
+
+.kategori-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+/* Table footer */
+.table-footer {
+  padding: 20px;
+  background: #f9fafb;
+  border-top: 2px solid #e5e7eb;
+}
+
+.table-footer p {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  color: #374151;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.legend-item {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.legend-item strong {
+  color: #374151;
+}
+
+/* Header actions */
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-export {
+  padding: 8px 16px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-export:hover {
+  background: #059669;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .hasil-table {
+    font-size: 12px;
+  }
+
+  .hasil-table th,
+  .hasil-table td {
+    padding: 8px 5px;
+  }
+
+  .nama-col {
+    width: 150px;
+  }
+}
+
+.hasil-guru-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hasil-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kategori-badge {
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.nilai-bar {
+  position: relative;
+  height: 16px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  margin: 12px 0;
+}
+
+.nilai-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+}
+
+.nilai-angka {
+  position: absolute;
+  right: 8px;
+  top: -22px;
+  font-weight: bold;
+}
+
+.aspek-item {
+  margin-top: 10px;
+}
+
+.aspek-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.aspek-bar-fill {
+  height: 10px;
+  background: #667eea;
+  border-radius: 6px;
+}
+
+.mini-bar-wrapper {
+  position: relative;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 6px;
+}
+.mini-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+}
+.mini-bar-text {
+  position: absolute;
+  right: 6px;
+  top: -18px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* ===== SKOR SURVEY BAR ===== */
+
+.score-cell {
+  width: 220px;
+}
+
+.score-bar-wrapper {
+  width: 100%;
+  height: 12px; /* INI KUNCI */
+  background-color: #e5e7eb; /* abu-abu */
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+/* ===== DETAIL ASPEK ===== */
+
+.aspek-detail-wrapper {
+  padding: 12px 20px 12px 60px; /* 👈 INI KUNCI (menjorok ke dalam) */
+}
+
+.aspek-detail-wrapper .score-bar-wrapper {
+  max-width: 360px; /* bar aspek lebih pendek */
+}
+
+/* ChangePassword.css - Styling untuk halaman ganti password */
+
+.change-password-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.change-password-box {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 500px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.change-password-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.security-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.change-password-header h1 {
+  color: #333;
+  font-size: 24px;
+  margin: 0 0 10px 0;
+}
+
+.welcome-text {
+  color: #666;
+  font-size: 15px;
+  margin: 0;
+}
+
+.welcome-text strong {
+  color: #667eea;
+  font-weight: 700;
+}
+
+.info-box {
+  background: #fff3cd;
+  border-left: 4px solid #f59e0b;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.info-box p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #856404;
+  line-height: 1.5;
+}
+
+.info-box p:first-child {
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.info-box p:last-child {
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #555;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+.hint {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.error-hint {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.success-hint {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #fcc;
+}
+
+.btn-change-password {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-change-password:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn-change-password:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-change-password:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.tips-box {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.tips-box p {
+  color: #555;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.tips-box ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.tips-box li {
+  color: #666;
+  font-size: 13px;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .change-password-box {
+    padding: 30px 20px;
+  }
+
+  .change-password-header h1 {
+    font-size: 20px;
+  }
+
+  .security-icon {
+    font-size: 50px;
+  }
+
+  .form-group input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .btn-change-password {
+    padding: 14px;
+    font-size: 15px;
+  }
+}
